@@ -13,7 +13,7 @@ class Api::V1::MembersController < ApplicationController
     # GET /members/:id
     def show
       if check_access
-        render json: @member, status 200
+        render json: @member, status: 200
       end
     end
   
@@ -32,11 +32,12 @@ class Api::V1::MembersController < ApplicationController
   
     # PUT /members/:id
     def update
-        if @member.update(member_params) 
-            render json: @member, status: 200
-        else 
-            render json: { error: "Unable to update member: #{@member.errors.full_messages.to_sentence}" }, status: 400
-         end
+        if check_access
+            if @member.update(member_params) 
+                render json: @member, status: 200
+            else 
+                render json: { error: "Unable to update member: #{@member.errors.full_messages.to_sentence}" }, status: 400
+            end
         end
     end
   
@@ -44,7 +45,7 @@ class Api::V1::MembersController < ApplicationController
     def destroy
       if check_access
         @member.destroy
-        render json: { message: 'Member record successfully deleted.'}, status: 200
+        render json: { message: 'Member record successfully deleted.'}, status: 201
       end
     end
   

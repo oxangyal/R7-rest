@@ -45,7 +45,7 @@ class Api::V1::MembersController < ApplicationController
     def destroy
       if check_access
         @member.destroy
-        render json: { message: 'Member record successfully deleted.'}, status: 201
+        render json: { message: 'Member record successfully deleted.'}, status: 200
       end
     end
   

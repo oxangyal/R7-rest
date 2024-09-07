@@ -39,6 +39,9 @@ gem "bootsnap", require: false
 gem 'rspec-rails'
 gem 'rexml'
 gem 'rswag'
+gem "rack-cors"
+gem "rack", "2.2.8.1"
+gem "rack-session", "1.0.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

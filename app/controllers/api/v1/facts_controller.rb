@@ -36,20 +36,20 @@ class Api::V1::FactsController < ApplicationController
   
     # PUT /members/:member_id/facts/:id
     def update
-        if @fact.update(fact_params)
-          render json: @fact
+      if @fact.update(fact_params)
+          render json: @fact, status: 200
         else
           render json: { error: "Unable to update fact: #{@fact.errors.full_messages.to_sentence}" }, status: 400
-        end
+      end
     end
   
     # DELETE /members/:member_id/facts/:id
     def destroy
         if @fact
           @fact.destroy
-          render json: { message: "Fact successfully deleted." }, status: :ok
+          render json: { message: "Fact successfully deleted." }, status: 200
         else
-          render json: { error: "Fact not found." }, status: :not_found
+          render json: { error: "Fact not found." }, status: not_found
         end
     end
   
